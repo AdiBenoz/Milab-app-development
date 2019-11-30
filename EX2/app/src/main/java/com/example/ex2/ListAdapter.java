@@ -10,14 +10,14 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class ListAdapter extends RecyclerView.Adapter {
-    private int[] mImages;
-    private String[] mNames;
+    private List<Personality> mData;
     Context context;
 
-    public ListAdapter(Context context, String[] names, int[] images) {
-        mImages = images;
-        mNames = names;
+    public ListAdapter(Context context, List<Personality> Doctors) {
+        this.mData = Doctors;
         this.context = context;
     }
 
@@ -42,15 +42,15 @@ public class ListAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        int picForDisplay = mImages[position];
+        int picForDisplay = mData.get(position).image;
         ((MyViewHolder)holder).mImageView.setImageResource(picForDisplay);
-        String textForDisplay = mNames[position];
+        String textForDisplay = mData.get(position).name;
         ((MyViewHolder)holder).mTextView.setText(textForDisplay);
     }
 
     @Override
     public int getItemCount() {
-        return mNames.length;
+        return mData.size();
     }
 
 
