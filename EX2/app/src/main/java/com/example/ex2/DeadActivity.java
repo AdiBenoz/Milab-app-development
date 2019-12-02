@@ -17,8 +17,8 @@ public class DeadActivity extends AppCompatActivity {
 
 
         List<Personality> dead = new ArrayList<>();
-        dead.add(new Personality(R.drawable.d, "Derek"));
         dead.add(new Personality(R.drawable.g, "George"));
+        dead.add(new Personality(R.drawable.d, "Derek"));
         dead.add(new Personality(R.drawable.lex, "Lexie"));
         dead.add(new Personality(R.drawable.ms, "Mark"));
         dead.add(new Personality(R.drawable.denny, "Denny"));
