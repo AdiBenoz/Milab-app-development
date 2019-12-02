@@ -22,6 +22,7 @@ public class DeadActivity extends AppCompatActivity {
         dead.add(new Personality(R.drawable.lex, "Lexie"));
         dead.add(new Personality(R.drawable.ms, "Mark"));
         dead.add(new Personality(R.drawable.denny, "Denny"));
+        dead.add(new Personality(R.drawable.ellis, "Ellis"));
 
 
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView2);

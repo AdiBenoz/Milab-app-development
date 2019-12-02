@@ -22,6 +22,9 @@ public class AliveActivity extends AppCompatActivity {
         alive.add(new Personality(R.drawable.ez, "EZ"));
         alive.add(new Personality(R.drawable.cris, "Christina"));
         alive.add(new Personality(R.drawable.jack, "Jackson"));
+        alive.add(new Personality(R.drawable.bailey, "Bailey"));
+        alive.add(new Personality(R.drawable.em, "Emilia"));
+        alive.add(new Personality(R.drawable.april, "April"));
 
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView1);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
