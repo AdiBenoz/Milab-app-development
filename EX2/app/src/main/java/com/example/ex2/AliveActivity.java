@@ -16,7 +16,6 @@ public class AliveActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alive);
 
         List<Personality> alive = new ArrayList<>();
-        Personality Adi = new Personality(R.drawable.mere1, "Meredith");
         alive.add(new Personality(R.drawable.mere1, "Meredith"));
         alive.add(new Personality(R.drawable.alex, "Alex"));
         alive.add(new Personality(R.drawable.ez, "EZ"));
