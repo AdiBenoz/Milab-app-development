@@ -5,7 +5,6 @@ import android.app.IntentService;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.Context;
-import android.util.Log;
 
 public class NotifyIntentService extends IntentService {
     private static final String ACTION_BUMP_QUOTE = "com.example.exercise_03.action.BUMP_QUOTE";
@@ -23,15 +22,13 @@ public class NotifyIntentService extends IntentService {
      */
 
     private void startAlarm() {
-        Log.d("alarm", "Alarm");
         AlarmManager alarmManager = (AlarmManager)this.getSystemService(this.ALARM_SERVICE);
         long when = System.currentTimeMillis();
         Intent intent = new Intent(this, NotificationReceiver.class);
-        intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND); //x
+        intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, NotificationReceiver.REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, when, (AlarmManager.INTERVAL_FIFTEEN_MINUTES / 15), pendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, when, (AlarmManager.INTERVAL_FIFTEEN_MINUTES / 3), pendingIntent);
     }
-
 
     public static void startActionQuote(MainActivity context) {
         Intent intent = new Intent(context, NotifyIntentService.class);
@@ -43,7 +40,6 @@ public class NotifyIntentService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         if (intent != null) {
             final String action = intent.getAction();
-            Log.d("Intent Service", "intent service");
             if (ACTION_BUMP_QUOTE.equals(action)) {
                 handleActionBumpQuote();
             } else {

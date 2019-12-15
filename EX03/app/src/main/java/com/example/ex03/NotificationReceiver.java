@@ -7,7 +7,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
@@ -21,7 +20,6 @@ public class NotificationReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        Log.d("NotifyReceiver", "NotifyReceiver");
         registerNotificationChannel(context);
 
         Intent intent1 = new Intent(context, MainActivity.class);
@@ -32,11 +30,11 @@ public class NotificationReceiver extends BroadcastReceiver {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.smile)
-                .setContentTitle("your job now is:")
+                .setContentTitle("Think about:")
                 .setContentText(currentQuote)
                 .setContentIntent(pendingIntent)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setAutoCancel(true); // remove after tap
+                .setAutoCancel(true);
 
         NotificationManager nm = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
         nm.notify(mNotificationId++, builder.build());
