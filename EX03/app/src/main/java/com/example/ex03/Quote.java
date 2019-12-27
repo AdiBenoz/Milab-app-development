@@ -9,7 +9,7 @@ public class Quote {
     public List<String> mQuotes = QuotesPull();
 
     public Quote(){
-        int random = new Random().nextInt(6);
+        int random = new Random().nextInt(mQuotes.size());
         this.mQuote = this.mQuotes.get(random);
     }
 

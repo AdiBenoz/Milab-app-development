@@ -7,14 +7,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-
 import androidx.core.app.NotificationCompat;
-
 import static android.content.Context.NOTIFICATION_SERVICE;
+
 
 public class NotificationReceiver extends BroadcastReceiver {
     public static final int REQUEST_CODE = 2;
     private static final String CHANNEL_ID = "NotifyChannel";
+    private static final String NOTIFICATION_TITLE = "Think about:";
     private int mNotificationId = 1;
 
     @Override
@@ -30,7 +30,7 @@ public class NotificationReceiver extends BroadcastReceiver {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.smile)
-                .setContentTitle("Think about:")
+                .setContentTitle(NOTIFICATION_TITLE)
                 .setContentText(currentQuote)
                 .setContentIntent(pendingIntent)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
