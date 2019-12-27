@@ -3,76 +3,82 @@ const fs = require('fs');
 let app = express();
 
 
-
 app.get('/tasks', (req, res) => {
-    let printedTasks = printTasks();
-    res.send(printedTasks);
-});
-
-app.post('/new', (req, res) => {
-    let id = req.query.task
-    let newTask = req.query.task;
-    let status = addTask(id, newTask);
-    res.send(status);
-});
-
-app.post('/remove', (req, res) => {
-    let id = req.query.task
-    let status = removeTask(id);
-    res.send(status);
-});
-
-
-
-function printTasks() {
     let printedTasks;
     fs.readFile('tasks.json', (err,content) =>{
         if(err) {
             console.error(err);
             return;
         }
-        printedTasks = content;
+        printedTasks = JSON.parse(content);
+        if(Object.keys(printedTasks).length === 0){
+            res.send("No tasks for you. Go to the beach");
+        } else {
+            res.send("Hello there! here are your current tasks: " + JSON.stringify(printedTasks));
+        }
     })
-    return printTasks;
-}
+});
 
-
-function addTask(id, newTask) {
+app.post('/new', (req, res) => {
+    let id = req.query.id;
+    let newTask = req.query.task;
+    if (!id || !newTask){
+        res.send("please  id and task");
+        return;
+    }
     let tasksJson;
     let updatedTaskList;
     fs.readFile('tasks.json', (err,content) =>{
         if(err) {
             console.error(err);
+            res.send(err + "try again");
             return;
         }
         tasksJson = JSON.parse(content);
-        tasksJson.tasks.id = newTask;
+        tasksJson[id] = newTask;
         updatedTaskList = JSON.stringify(tasksJson);
         fs.writeFile('tasks.json', updatedTaskList, (err,content) =>{
             if(err) {
-                return err;
+                console.error(err);
+                res.send(err + "try again");
+                return;
             } else {
-                return "Task Added succesfully!"
+                res.send(`Task ${newTask} Added succesfully!`);
             }});
     });
-}
+});
 
-function removeTask(id) {
+app.post('/remove', (req, res) => {
+    let id = req.query.id
+    if (!id){
+        res.send("please enter id");
+        return;
+    }
+    let deletedTask;
     let tasksJson;
     let updatedTaskList;
     fs.readFile('tasks.json', (err,content) =>{
         if(err) {
             console.error(err);
+            res.send(err + "try again");
             return;
         }
         tasksJson = JSON.parse(content);
-        delete tasksJson.tasks[id];
+        deletedTask = tasksJson[id];
+        delete tasksJson[id];
         updatedTaskList = JSON.stringify(tasksJson);
         fs.writeFile('tasks.json', updatedTaskList, (err,content) =>{
             if(err) {
-                return err;
+                console.error(err);
+            res.send(err + "try again");
             } else {
-                return "Task Added succesfully!"
+                res.send(`Task ${deletedTask} Removed succesfully!`);
             }});
     });
-}
+
+
+});
+
+app.listen(3000, ()=>{
+    console.log('Listening on port 3000....');
+});
