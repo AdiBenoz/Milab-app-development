@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "278091177273",
+    "firebase_url": "https://stockmonitor-75886.firebaseio.com",
+    "project_id": "stockmonitor-75886",
+    "storage_bucket": "stockmonitor-75886.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278091177273:android:084d7fab04482238621ce8",
+        "android_client_info": {
+          "package_name": "com.example.stockmonitor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278091177273-27n96dee319lv4vtr417mr3gp7kcvrlk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.stockmonitor",
+            "certificate_hash": "a71f15bf25ca3656a3a1151e9ba711098cf01e82"
+          }
+        },
+        {
+          "client_id": "278091177273-v7pp6ih842ielrtsvcj107if2f06g0ag.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBS5TL4RblvWBLigHSXRwo13XWJqoOMEdY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278091177273-v7pp6ih842ielrtsvcj107if2f06g0ag.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
